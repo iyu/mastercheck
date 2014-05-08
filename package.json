@@ -1,6 +1,6 @@
 {
     "name": "mastercheck",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "mastercheck",
     "main": "index.js",
     "scripts": {
@@ -12,10 +12,13 @@
         "url": "git://github.com/yuhei-a/mastercheck.git"
     },
     "keywords": [
-        "mastercheck"
+        "mastercheck",
+        "master",
+        "data",
+        "check"
     ],
     "author": "Yuhei Aihara",
-    "license": "BSD",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/yuhei-a/mastercheck/issues"
     },

@@ -5,7 +5,7 @@ Consistency check of the master data.
 
 ## Installation
 ```
-npm install git+https://github.com/yuhei-a/mastercheck.git@0.0.1
+npm install mastercheck.git
 ```
 
 ## Usage
