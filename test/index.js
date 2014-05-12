@@ -59,8 +59,10 @@ describe('MasterCheck test', function() {
                 arr: [ 3, 4 ]
             }
         ];
-        masterCheck.check('A', dataList, function(err) {
+        masterCheck.check('A', dataList, function(err, result) {
             should.not.exist(err);
+            should.exist(result);
+            Object.keys(result).should.have.length(0);
             done();
         });
     });
@@ -80,9 +82,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'num', value: -1 });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'num', value: -1 } ] });
                 done();
             });
         });
@@ -100,9 +103,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'num', value: 101 });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'num', value: 101 } ] });
                 done();
             });
         });
@@ -126,9 +130,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'obj.code', value: '' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'obj.code', value: '' } ] });
                 done();
             });
         });
@@ -150,9 +155,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'obj.code', value: '12345678901' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'obj.code', value: '12345678901' } ] });
                 done();
             });
         });
@@ -174,9 +180,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'obj.type', value: 'Rabbit' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'obj.type', value: 'Rabbit' } ] });
                 done();
             });
         });
@@ -198,9 +205,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'list.0.code', value: 'dev' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'list.0.code', value: 'dev' } ] });
                 done();
             });
         });
@@ -224,9 +232,10 @@ describe('MasterCheck test', function() {
                     arr: [ 3, 4 ]
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'obj.bool', value: 'true' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'obj.bool', value: 'true' } ] });
                 done();
             });
         });
@@ -243,9 +252,10 @@ describe('MasterCheck test', function() {
                     _id: 'test2',
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'arr', value: undefined });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'arr', value: undefined } ] });
                 done();
             });
         });
@@ -272,9 +282,10 @@ describe('MasterCheck test', function() {
                     },
                 }
             ];
-            masterCheck.check('A', dataList, function(err) {
-                should.exist(err);
-                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'map', value: 'aaaa' });
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'map', value: 'aaaa' } ] });
                 done();
             });
         });
