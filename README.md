@@ -5,7 +5,7 @@ Consistency check of the master data.
 
 ## Installation
 ```
-npm install mastercheck.git
+npm install mastercheck
 ```
 
 ## Usage
