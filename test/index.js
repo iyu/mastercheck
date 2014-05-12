@@ -20,7 +20,10 @@ describe('MasterCheck test', function() {
                 ],
                 arr: new masterCheck.Object({ required: true }, [
                     new masterCheck.Number()
-                ])
+                ]),
+                map: new masterCheck.Map({ match: /^test/ }, {
+                    name: new masterCheck.String()
+                }),
             }
         };
         masterCheck.setup(format);
@@ -243,6 +246,35 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err) {
                 should.exist(err);
                 err.should.eql({ collectionName: 'A', _id: 'test2', key: 'arr', value: undefined });
+                done();
+            });
+        });
+    });
+
+    describe('Map', function() {
+        it('Existence check test.', function(done) {
+            var dataList = [
+                {
+                    _id: 'test1',
+                    arr: [ 1, 2 ],
+                    map: {
+                        test01: {
+                            name: 'test01',
+                        },
+                    },
+                },
+                {
+                    _id: 'test2',
+                    arr: [ 3, 4 ],
+                    map: {
+                        test01: {},
+                        aaaa: {},
+                    },
+                }
+            ];
+            masterCheck.check('A', dataList, function(err) {
+                should.exist(err);
+                err.should.eql({ collectionName: 'A', _id: 'test2', key: 'map', value: 'aaaa' });
                 done();
             });
         });

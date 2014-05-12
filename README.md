@@ -27,7 +27,10 @@ var format = {
         ],
         arr: [
             new mastercheck.Number()
-        ]
+        ],
+        map: new mastercheck.Map(null, {
+            name: new mastercheck.String()
+        })
     },
     CollectionB: {}
 }
@@ -36,8 +39,8 @@ mastercheck.setup(format);
 
 var masterData = {
     CollectionA: [
-        { _id: 'A1', num: 0, obj: { bool: true }, list: [ { num: 1 }, { num: 2 } ], arr: [ 1, 2 ] },
-        { _id: 'A2', num: 0, obj: { bool: 1 }, list: [ { num: 1 }, { num: 2 } ], arr: [ 1, 2 ] }
+        { _id: 'A1', num: 0, obj: { bool: true }, list: [ { num: 1 }, { num: 2 } ], arr: [ 1, 2 ], map: { test1: { name: 'test1' }, test2: { name: 'test2' } } },
+        { _id: 'A2', num: 0, obj: { bool: 1 }, list: [ { num: 1 }, { num: 2 } ], arr: [ 1, 2 ], map: { test1: { name: 'test1' }, test2: { name: 'test2' } } }
     ],
     CollectionB: [
 
@@ -70,7 +73,7 @@ new mastercheck.String({
     required: true, // Existence check. Default do not check.
     minLength: 0, // Minimum number of characters check. Default do not check.
     maxLength: 20, // Maximum number of characters check. Default do not check.
-    match: /^apple_/, // String match check. Value to use for the String#match. Default do not check.
+    match: /^apple_/ // String match check. Value to use for the String#match. Default do not check.
 });
 
 // For a string of any in ['A', 'B', 'C'].
@@ -91,6 +94,17 @@ new mastercheck.Number({
 // For a object.
 new mastercheck.Object({
     required: true // Existance check. Default do not check.
+}, {
+    bool: new mastercheck.Boolean(),
+    num: new mastercheck.Number()
+});
+```
+#### MasterCheck.Map
+```
+// For a object.
+new mastercheck.Map({
+    maxLength: 20, // Maximum number of characters check. Default do not check.
+    match: /^apple_/ // String match check. Value to use for the String#match. Default do not check.
 }, {
     bool: new mastercheck.Boolean(),
     num: new mastercheck.Number()
