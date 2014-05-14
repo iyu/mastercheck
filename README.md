@@ -15,21 +15,21 @@ var mastercheck = require('mastercheck');
 
 var format = {
     CollectionA: {
-        _id: new mastercheck.String(),
-        num: new mastercheck.Number(),
+        _id: mastercheck.format('String'),
+        num: mastercheck.format('Number'),
         obj: {
-            bool: new mastercheck.Boolean(),
+            bool: mastercheck.format('Boolean'),
         },
         list: [
             {
-                num: new mastercheck.Number()
+                num: mastercheck.format('Number')
             }
         ],
         arr: [
-            new mastercheck.Number()
+            mastercheck.format('Number')
         ],
-        map: new mastercheck.Map(null, {
-            name: new mastercheck.String()
+        map: mastercheck.format('Map', null, {
+            name: mastercheck.format('String')
         })
     },
     CollectionB: {}
@@ -60,7 +60,7 @@ mastercheck.checkAll(masterData, function(err) {
 #### MasterCheck.Number
 ```
 // For numeric values of 0-10.
-new mastercheck.Number({
+mastercheck.format('Number', {
     required: true, // Existence check. Default do not check.
     min: 0, // Minimum value check. Default do not check.
     max: 10 // Maximum value check. Default do not check.
@@ -69,7 +69,7 @@ new mastercheck.Number({
 #### MasterCheck.String
 ```
 // For a string of 0-20 characters to match /^apple_/.
-new mastercheck.String({
+mastercheck.format('String', {
     required: true, // Existence check. Default do not check.
     minLength: 0, // Minimum number of characters check. Default do not check.
     maxLength: 20, // Maximum number of characters check. Default do not check.
@@ -77,7 +77,7 @@ new mastercheck.String({
 });
 
 // For a string of any in ['A', 'B', 'C'].
-new mastercheck.String({
+mastercheck.format('String', {
     required: true, // Existence check. Default do not check.
     select: [ 'A', 'B', 'C' ] // String match check. Default do not check.
 });
@@ -85,14 +85,14 @@ new mastercheck.String({
 #### MasterCheck.Boolean
 ```
 // For a boolean.
-new mastercheck.Number({
+mastercheck.format('Number', {
     required: true // Existence check. Default do not check.
 });
 ```
 #### MasterCheck.Object
 ```
 // For a object.
-new mastercheck.Object({
+mastercheck.format('Object', {
     required: true // Existance check. Default do not check.
 }, {
     bool: new mastercheck.Boolean(),
@@ -102,7 +102,7 @@ new mastercheck.Object({
 #### MasterCheck.Map
 ```
 // For a object.
-new mastercheck.Map({
+mastercheck.format('Map', {
     maxLength: 20, // Maximum number of characters check. Default do not check.
     match: /^apple_/ // String match check. Value to use for the String#match. Default do not check.
 }, {

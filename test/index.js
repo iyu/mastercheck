@@ -6,24 +6,24 @@ describe('MasterCheck test', function() {
     before(function(done) {
         var format = {
             A: {
-                _id: new masterCheck.String({ required: true }),
-                num: new masterCheck.Number({ min: 0, max: 100 }),
+                _id: masterCheck.format('String', { required: true }),
+                num: masterCheck.format('Number', { min: 0, max: 100 }),
                 obj: {
-                    code: new masterCheck.String({ minLength: 1, maxLength: 10 }),
-                    type: new masterCheck.String({ select: [ 'Dog', 'Cat' ] }),
-                    bool: new masterCheck.Boolean()
+                    code: masterCheck.format('String', { minLength: 1, maxLength: 10 }),
+                    type: masterCheck.format('String', { select: [ 'Dog', 'Cat' ] }),
+                    bool: masterCheck.format('Boolean')
                 },
                 list: [
                     {
-                        code: new masterCheck.String({ match: /^test/ })
+                        code: masterCheck.format('String', { match: /^test/ })
                     }
                 ],
-                arr: new masterCheck.Object({ required: true }, [
-                    new masterCheck.Number()
+                arr: masterCheck.format('Object', { required: true }, [
+                    masterCheck.format('Number')
                 ]),
-                map: new masterCheck.Map({ match: /^test/ }, {
-                    name: new masterCheck.String()
-                }),
+                map: masterCheck.format('Map', { match: /^test/ }, {
+                    name: masterCheck.format('String')
+                })
             }
         };
         masterCheck.setup(format);
