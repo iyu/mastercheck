@@ -85,7 +85,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'num', value: -1 } ] });
+                result.should.eql({ test2: [ { key: 'num', value: -1, message: '-1 should be above 0' } ] });
                 done();
             });
         });
@@ -106,7 +106,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'num', value: 101 } ] });
+                result.should.eql({ test2: [ { key: 'num', value: 101, message: '101 should be below 100' } ] });
                 done();
             });
         });
@@ -133,7 +133,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'obj.code', value: '' } ] });
+                result.should.eql({ test2: [ { key: 'obj.code', value: '', message: ' length should be above 1' } ] });
                 done();
             });
         });
@@ -158,7 +158,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'obj.code', value: '12345678901' } ] });
+                result.should.eql({ test2: [ { key: 'obj.code', value: '12345678901', message: '12345678901 length should be below 10' } ] });
                 done();
             });
         });
@@ -183,7 +183,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'obj.type', value: 'Rabbit' } ] });
+                result.should.eql({ test2: [ { key: 'obj.type', value: 'Rabbit', message: 'Rabbit should match Dog or Cat' } ] });
                 done();
             });
         });
@@ -208,7 +208,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'list.0.code', value: 'dev' } ] });
+                result.should.eql({ test2: [ { key: 'list.0.code', value: 'dev', message: 'dev should match /^test/' } ] });
                 done();
             });
         });
@@ -235,7 +235,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'obj.bool', value: 'true' } ] });
+                result.should.eql({ test2: [ { key: 'obj.bool', value: 'true', message: 'true should be a Boolean' } ] });
                 done();
             });
         });
@@ -255,7 +255,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'arr', value: undefined } ] });
+                result.should.eql({ test2: [ { key: 'arr', value: undefined, message: 'This field is required' } ] });
                 done();
             });
         });
@@ -285,7 +285,7 @@ describe('MasterCheck test', function() {
             masterCheck.check('A', dataList, function(err, result) {
                 should.not.exist(err);
                 should.exist(result);
-                result.should.eql({ test2: [ { key: 'map', value: 'aaaa' } ] });
+                result.should.eql({ test2: [ { key: 'map', value: 'aaaa', message: 'aaaa should match /^test/' } ] });
                 done();
             });
         });

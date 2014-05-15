@@ -48,11 +48,11 @@ var masterData = {
 };
 
 mastercheck.check('CollectionA', masterData.CollectionA, function(err) {
-    // The return err in { collectionName: 'CollectionA', _id: 'A2', key: 'obj.bool', value: 1 } when it was inconsistent if
+    // The return err in { collectionName: 'CollectionA', _id: 'A2', key: 'obj.bool', value: 1, message: '1 should be a Boolean' } when it was inconsistent if
 });
 
 mastercheck.checkAll(masterData, function(err) {
-    // The return err in { collectionName: 'CollectionA', _id: 'A2', key: 'obj.bool', value: 1 } when it was inconsistent if
+    // The return err in { collectionName: 'CollectionA', _id: 'A2', key: 'obj.bool', value: 1, message: '1 should be a Boolean' } when it was inconsistent if
 });
 ```
 
@@ -91,7 +91,7 @@ mastercheck.format('Number', {
 ```
 #### MasterCheck.Object
 ```
-// For a object.
+// For a object. Include { bool: Boolean, num: Number }.
 mastercheck.format('Object', {
     required: true // Existance check. Default do not check.
 }, {
@@ -101,7 +101,7 @@ mastercheck.format('Object', {
 ```
 #### MasterCheck.Map
 ```
-// For a object.
+// For a object map. Key a string of 1-20 to match /^apple_/. Include { bool: Boolean, num: Number }.
 mastercheck.format('Map', {
     maxLength: 20, // Maximum number of characters check. Default do not check.
     match: /^apple_/ // String match check. Value to use for the String#match. Default do not check.
