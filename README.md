@@ -9,7 +9,7 @@ npm install mastercheck
 ```
 
 ## Usage
-### Quick Start
+### Example
 ```
 var mastercheck = require('mastercheck');
 
@@ -56,7 +56,7 @@ mastercheck.checkAll(masterData, function(err) {
 });
 ```
 
-### Format Part Option
+### Example Format Part Option
 #### MasterCheck.Number
 ```
 // For numeric values of 0-10.
@@ -98,6 +98,18 @@ mastercheck.format('Object', {
     bool: new mastercheck.Boolean(),
     num: new mastercheck.Number()
 });
+```
+#### MasterCheck.Array
+```
+// For a array of 0-20 have length. Includ { bool: Boolean, num: Number }.
+mastercheck.format('Array', {
+    required: true // Existance check. Default do not check.
+    minLength: 0, // Minimum length check. Default do not check.
+    maxLength: 20, // Maximum length check. Default do not check.
+}, [
+    bool: new mastercheck.Boolean(),
+    num: new mastercheck.Number()
+]);
 ```
 #### MasterCheck.Map
 ```
