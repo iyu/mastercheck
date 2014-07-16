@@ -59,11 +59,17 @@ mastercheck.checkAll(masterData, function(err) {
 ### Example Format Part Option
 #### MasterCheck.Number
 ```
-// For numeric values of 0-10.
+// For a number values of 0-10.
 mastercheck.format('Number', {
     required: true, // Existence check. Default do not check.
     min: 0, // Minimum value check. Default do not check.
     max: 10 // Maximum value check. Default do not check.
+});
+
+// For a number of any in [1, 3, 5].
+mastercheck.format('String', {
+    required: true, // Existence check. Default do not check.
+    select: [ 1, 3, 5 ] // Number match check. Default do not check.
 });
 ```
 #### MasterCheck.String
