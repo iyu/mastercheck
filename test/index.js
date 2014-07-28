@@ -7,7 +7,7 @@ describe('MasterCheck test', function() {
         var format = {
             A: {
                 _id: masterCheck.format('String', { required: true }),
-                num: masterCheck.format('Number', { min: 0, max: 100 }),
+                num: masterCheck.format('Number', { min: 0, max: 100, integer: true }),
                 obj: {
                     code: masterCheck.format('String', { minLength: 1, maxLength: 10 }),
                     type: masterCheck.format('String', { select: [ 'Dog', 'Cat' ] }),
@@ -107,6 +107,27 @@ describe('MasterCheck test', function() {
                 should.not.exist(err);
                 should.exist(result);
                 result.should.eql({ test2: [ { key: 'num', value: 101, message: '101 should be below 100' } ] });
+                done();
+            });
+        });
+
+        it('Integer check test.', function(done) {
+            var dataList = [
+                {
+                    _id: 'test1',
+                    num: 10,
+                    arr: [ 1, 2 ]
+                },
+                {
+                    _id: 'test2',
+                    num: 10.1,
+                    arr: [ 3, 4 ]
+                }
+            ];
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'num', value: 10.1, message: '10.1 should be integer' } ] });
                 done();
             });
         });
