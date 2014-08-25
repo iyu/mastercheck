@@ -1,6 +1,6 @@
 {
     "name": "mastercheck",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "description": "mastercheck",
     "main": "index.js",
     "scripts": {
