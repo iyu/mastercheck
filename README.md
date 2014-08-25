@@ -68,7 +68,7 @@ mastercheck.format('Number', {
 });
 
 // For a number of any in [1, 3, 5].
-mastercheck.format('String', {
+mastercheck.format('Number', {
     required: true, // Existence check. Default do not check.
     select: [ 1, 3, 5 ] // Number match check. Default do not check.
 });
@@ -92,7 +92,7 @@ mastercheck.format('String', {
 #### MasterCheck.Boolean
 ```
 // For a boolean.
-mastercheck.format('Number', {
+mastercheck.format('Boolean', {
     required: true // Existence check. Default do not check.
 });
 ```
