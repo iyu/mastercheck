@@ -11,7 +11,11 @@ describe('MasterCheck test', function() {
                 obj: {
                     code: masterCheck.format('String', { minLength: 1, maxLength: 10 }),
                     type: masterCheck.format('String', { select: [ 'Dog', 'Cat' ] }),
-                    bool: masterCheck.format('Boolean')
+                    bool: masterCheck.format('Boolean', function(parents) {
+                        if (parents[0].parent && parents[0].parent.type === 'Dog') {
+                            return { required: true };
+                        }
+                    })
                 },
                 list: [
                     {
@@ -37,7 +41,6 @@ describe('MasterCheck test', function() {
                 num: 1,
                 obj: {
                     code: 'test1_1',
-                    bool: true
                 },
                 list: [
                     { code: 'test1_1_1' },
@@ -50,6 +53,7 @@ describe('MasterCheck test', function() {
                 num: 2,
                 obj: {
                     code: 'test2_1',
+                    type: 'Dog',
                     bool: false
                 },
                 list: [
@@ -189,7 +193,8 @@ describe('MasterCheck test', function() {
                 {
                     _id: 'test1',
                     obj: {
-                        type: 'Dog'
+                        type: 'Dog',
+                        bool: false
                     },
                     arr: [ 1, 2 ]
                 },
