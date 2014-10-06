@@ -57,6 +57,8 @@ mastercheck.checkAll(masterData, function(err) {
 ```
 
 ### Example Format Part Option
+Specify a function that returns an object or objects.
+Function have a parent in the arguments.
 #### MasterCheck.Number
 ```
 // For a integer number values of 0-10.
