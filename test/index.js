@@ -12,7 +12,7 @@ describe('MasterCheck test', function() {
                     code: masterCheck.format('String', { minLength: 1, maxLength: 10 }),
                     type: masterCheck.format('String', { select: [ 'Dog', 'Cat' ] }),
                     bool: masterCheck.format('Boolean', function(parents) {
-                        if (parents[0].parent && parents[0].parent.type === 'Dog') {
+                        if (parents[0].type === 'Dog') {
                             return { required: true };
                         }
                     })
