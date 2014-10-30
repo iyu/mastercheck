@@ -9,7 +9,7 @@ describe('MasterCheck test', function() {
                 _id: masterCheck.format('String', { required: true }),
                 num: masterCheck.format('Number', { min: 0, max: 100, integer: true }),
                 obj: {
-                    code: masterCheck.format('String', { minLength: 1, maxLength: 10 }),
+                    code: masterCheck.format('String', { minLength: 1, maxLength: 10, existIn: 'B' }),
                     type: masterCheck.format('String', { select: [ 'Dog', 'Cat' ] }),
                     bool: masterCheck.format('Boolean', function(parents) {
                         if (parents[0].type === 'Dog') {
@@ -30,7 +30,7 @@ describe('MasterCheck test', function() {
                 })
             }
         };
-        masterCheck.setup(format);
+        masterCheck.setup(format, '_id', { B: [ 'test1_1', 'test2_1' ] });
         done();
     });
 
@@ -235,6 +235,31 @@ describe('MasterCheck test', function() {
                 should.not.exist(err);
                 should.exist(result);
                 result.should.eql({ test2: [ { key: 'list.0.code', value: 'dev', message: 'dev should match /^test/' } ] });
+                done();
+            });
+        });
+
+        it('Exist in keyMap check test.', function(done) {
+            var dataList = [
+                {
+                    _id: 'test1',
+                    obj: {
+                        code: 'test1_1'
+                    },
+                    arr: []
+                },
+                {
+                    _id: 'test2',
+                    obj: {
+                        code: 'test2_2'
+                    },
+                    arr: []
+                }
+            ];
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'obj.code', value: 'test2_2', message: 'test2_2 should be exist in B' } ] });
                 done();
             });
         });
