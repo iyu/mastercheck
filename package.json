@@ -1,6 +1,6 @@
 {
   "name": "mastercheck",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "mastercheck",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "async": "~0.2.10",
-    "lodash": "^2.4.1"
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "should": "~3.1.3",
