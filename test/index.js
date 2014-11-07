@@ -27,7 +27,8 @@ describe('MasterCheck test', function() {
                 ]),
                 map: masterCheck.format('Map', { match: /^test/ }, {
                     name: masterCheck.format('String')
-                })
+                }),
+                map2: masterCheck.format('Map', null, masterCheck.format('Number'))
             }
         };
         masterCheck.setup(format, '_id', { B: [ 'test1_1', 'test2_1' ] });
@@ -337,6 +338,35 @@ describe('MasterCheck test', function() {
                 should.not.exist(err);
                 should.exist(result);
                 result.should.eql({ test2: [ { key: 'map', value: 'aaaa', message: 'aaaa should match /^test/' } ] });
+                done();
+            });
+        });
+
+        it('Simple check test.', function(done) {
+            var dataList = [
+                {
+                    _id: 'test1',
+                    arr: [ 1, 2 ],
+                    map2: {
+                        a: 1,
+                        b: 2,
+                        c: 3
+                    }
+                },
+                {
+                    _id: 'test2',
+                    arr: [ 3, 4 ],
+                    map2: {
+                        d: 4,
+                        e: '5',
+                        f: 6
+                    }
+                }
+            ];
+            masterCheck.check('A', dataList, function(err, result) {
+                should.not.exist(err);
+                should.exist(result);
+                result.should.eql({ test2: [ { key: 'map2.e', value: '5', message: '5 should be a Number' } ] });
                 done();
             });
         });
