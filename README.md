@@ -2,6 +2,7 @@ MasterCheck
 ==========
 
 Consistency check of the master data.
+[Japanese document](https://github.com/yuhei-a/wiki/wiki/1.1.x-mastercheck)
 
 ## Installation
 ```
