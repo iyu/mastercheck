@@ -3,7 +3,7 @@ MasterCheck
 
 Consistency check of the master data.
 
-[Japanese documents](https://github.com/yuhei-a/wiki/wiki/1.1.x-mastercheck)
+[Documents](http://iyu.github.io/mastercheck/)
 
 ## Installation
 ```
