@@ -3,7 +3,7 @@ MasterCheck
 
 Consistency check of the master data.
 
-[Documents](http://iyu.github.io/mastercheck/)
+[Documents](http://iyu.github.io/repos/mastercheck/)
 
 ## Installation
 ```
@@ -134,6 +134,10 @@ mastercheck.format('Map', {
 });
 ```
 
-
-## Test
-Run `npm test` and `npm run-script jshint`
+## Contribution
+1. Fork it ( https://github.com/iyu/mastercheck/fork )
+2. Create a feature branch
+3. Commit your changes
+4. Rebase your local changes against the master branch
+5. Run test suite with the `npm test; npm run-script jshint` command and confirm that it passes
+6. Create new Pull Request
